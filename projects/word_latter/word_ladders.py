@@ -6,7 +6,7 @@
 # All words contain only lowercase alphabetic characters.
 # You may assume no duplicates in the word list.
 # You may assume begin_word and end_word are non-empty and are not the same.
-​
+
 # Sample:
 # begin_word = "hit"
 # end_word = "cog"
@@ -17,30 +17,30 @@
 # beginWord = "hungry"
 # endWord = "happy"
 # None
-​
-​
+
+
 # 1. Translate the problem into graph terminology
 # 2. Build your graph
 # 3. Traverse your graph
-​
+
 # undirected, cyclic, sparse
 # nodes are words, edges/neighbors are words that differ by one and only one letter
 from util import Stack, Queue  # These may come in handy
-​
-​
-​
+
+
+
 f = open('words.txt', 'r')
 words = f.read().split("\n")
 f.close()
-​
+
 word_set = set([w.lower() for w in words])
-​
+
 print(word_set)
 print(len(word_set))
-​
-​
-​
-​
+
+
+
+
 def get_neighbors(w):
     '''
     Return all words in word_set that have 1 and only 1 letter different
@@ -62,20 +62,20 @@ def get_neighbors(w):
                 # If so, add to neighbor list
                 neighbors.append(new_word)
     return neighbors
-​
-​
-​
-​
+
+
+
+
 # get_neighbors("sail")
-​
-​
+
+
 # bat
-​
+
 # cat, eat, fat, hat, lat, mat, oat, pat....
 # bet, bit...
 # bad, bae
-​
-​
+
+
 def find_ladders(begin_word, end_word):
     '''
     Find a word transformation between begin and end word
@@ -104,8 +104,9 @@ def find_ladders(begin_word, end_word):
                 path_copy.append(neighbor)
                 q.enqueue(path_copy)
     return None
-​
-​
+
+
 print(find_ladders("sail", "boat"))
-​
-​
+
+
+
